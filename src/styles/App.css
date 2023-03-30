@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+    height: 100vh;
+}
+.headWrapper {
+    margin: auto;
+    height: auto;
+    padding: 5.8em 10px 10px 10px;
+}
+.headWrapper-body {
+    background-color: white;
+    width: 400px;
+    height: 400px;
+    padding:1.8rem;
+    border-top-left-radius:1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+.bodyWrapper {
+    height: auto;
+    padding: 1rem 10px 10px 10px;
+}
+.bodyWrapper-container {
+    background-color: white;
+    width: 600px;
+    height: 400px;
+    padding: 1.8rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+.task-title {
+    /* Fallback: Set a background color. */
+  background-color: rgb(209, 213, 219);
+  
+  /* Create the gradient. */
+  background-image: linear-gradient(to right, rgb(248, 113, 113), rgb(59, 130, 246));
+  
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
