@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TodoCounter = (props) => {
+const TodoCounter = ({total, completed}) => {
     return (
         <>
         <p className='task-title inline-block text-2xl sm:text-3xl
@@ -9,7 +9,7 @@ const TodoCounter = (props) => {
         </p><br/>
         <p className="py-3 inline-block text-2xl sm:text-sm
          font-extrabold text-slate-900 tracking-tight dark:text-slate-200">
-            Completed 2 of 3</p>
+            Completed {completed} of {total}</p>
         </>
     )
 }
