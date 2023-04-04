@@ -5,15 +5,43 @@ import { TodoSearch } from "./TodoSearch";
 import { TodoCounter } from "./TodoCounter";
 
 
-const defaultTodos = [
-    { text: 'Cortar cebolla', completed: true },
-    { text: 'Tomar el curso de intro a React', completed: false },
-    { text: 'Llorar con la llorona', completed: false }
-  ]
+// const defaultTodos = [
+//     { text: 'LocalStorage With React JS', completed: true },
+//     { text: 'Tomar el curso de intro a React', completed: false },
+//     { text: 'Hooks', completed: false }
+//   ]
 
+
+// Hook Local Storage
+function useLocalStorage(itemName, initialValue) {
+  const localStorageItem = localStorage.getItem(itemName);
+  let parsedItem;
+
+  if(!localStorageItem){
+      localStorage.setItem(itemName, JSON.stringify(initialValue));
+      parsedItem = initialValue;
+  } else {
+    parsedItem = JSON.parse(localStorageItem);
+  }
+
+  const [item, setItem] = useState(parsedItem);
+
+
+  const saveItem = (newItem) => {
+    const stringifiedItem = JSON.stringify(newItem);
+    localStorage.setItem(itemName, stringifiedItem);
+    setItem(newItem);
+  }
+
+  return [
+    item,
+    saveItem
+  ];
+}
 const TodoBody = () => {
+
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const [search, setSearch] = useState('');
-  const [todos, setTodos] = useState(defaultTodos);
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -30,17 +58,19 @@ const TodoBody = () => {
     })
   }
 
+
+
   const completeTodos = (text) => {
     const todoIndex = todos.findIndex(todo => todo.text == text);
     const newTodos = [...todos];
     newTodos[todoIndex].completed = true;
-    setTodos(newTodos);
+    saveTodos(newTodos);
   }
   const deleteTodos = (text) => {
     const todoIndex = todos.findIndex(todo => todo.text == text);
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   }
 
   return (

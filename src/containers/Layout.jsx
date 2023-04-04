@@ -1,6 +1,6 @@
 import React from "react";
-import { TodoBody } from "./TodoBody";
-import { TodoHead } from "./TodoHead";
+import { TodoBody } from "../components/TodoBody";
+import { TodoHead } from "../components/TodoHead";
 
 const Layout = () => {
   return (
